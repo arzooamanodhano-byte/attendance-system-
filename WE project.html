@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Management System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background: #ffb6c1;
+            color: white;
+            padding: 15px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f08080;
+            color: white;
+        }
+
+        button {
+            padding: 6px 12px;
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .present {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .absent {
+            background: #f44336;
+            color: white;
+        }
+
+        .summary {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Attendance Management System</h1>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+            <td>Heer</td>
+            <td id="status1">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(1)">Present</button>
+                <button class="absent" onclick="markAbsent(1)">Absent</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Mehik</td>
+            <td id="status2">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(2)">Present</button>
+                <button class="absent" onclick="markAbsent(2)">Absent</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Dua</td>
+            <td id="status3">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(3)">Present</button>
+                <button class="absent" onclick="markAbsent(3)">Absent</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Hafsa</td>
+            <td id="status4">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(4)">Present</button>
+                <button class="absent" onclick="markAbsent(4)">Absent</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Husrain</td>
+            <td id="status4">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(5)">Present</button>
+                <button class="absent" onclick="markAbsent(5)">Absent</button>
+            </td>
+        </tr>
+        <tr>
+            <td>kubra</td>
+            <td id="status4">Not Marked</td>
+            <td>
+                <button class="present" onclick="markPresent(6)">Present</button>
+                <button class="absent" onclick="markAbsent(6)">Absent</button>
+            </td>
+        </tr>
+
+    </table>
+
+    <div class="summary">
+        <p>Present: <span id="presentCount">0</span></p>
+        <p>Absent: <span id="absentCount">0</span></p>
+    </div>
+</div>
+
+<script>
+    let presentCount = 0;
+    let absentCount = 0;
+
+    function markPresent(id) {
+        let status = document.getElementById("status" + id);
+
+        if (status.innerHTML !== "Present") {
+            if (status.innerHTML === "Absent") {
+                absentCount--;
+            }
+            status.innerHTML = "Present";
+            presentCount++;
+        }
+
+        updateCount();
+    }
+
+    function markAbsent(id) {
+        let status = document.getElementById("status" + id);
+
+        if (status.innerHTML !== "Absent") {
+            if (status.innerHTML === "Present") {
+                presentCount--;
+            }
+            status.innerHTML = "Absent";
+            absentCount++;
+        }
+
+        updateCount();
+    }
+
+    function updateCount() {
+        document.getElementById("presentCount").innerHTML = presentCount;
+        document.getElementById("absentCount").innerHTML = absentCount;
+    }
+</script>
+
+</body>
+</html>
